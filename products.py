@@ -13,3 +13,8 @@ print(products[0][1])#讀取0大清單中的1小清單位置
 for p in products:
 	print(p[0], "的價格是", p[1])
 	#print(p)
+
+with open("products.csv", "w", encoding = "big5") as f:
+	f.write("商品,價格\n")
+	for p in products:
+		f.write(p[0] + "," + p[1] + "\n")
