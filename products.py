@@ -1,12 +1,20 @@
-#讀取檔案
+import os#載入一個作業系統
 products = []
-with open("products.csv", "r", encoding = "big5") as f:
-	for line in f:#把products.csv 裡面的逐筆丟進line變數裡面
-		if "商品,價格" in line:
-			continue#商品跟價格 在 line 裡面那就跳過這一行
-		name,price = line.strip().split(",")#用split() 把 逗點分割,用strip()把換行符號刪除
-		products.append([name,price])
-print(products)
+if os.path.isfile("products.csv"):#檢查檔案在不再
+	print("yeah!找到檔案了!")
+	with open("products.csv", "r", encoding = "big5") as f:#讀取檔案
+		for line in f:#把products.csv 裡面的逐筆丟進line變數裡面
+			if "商品,價格" in line:
+				continue#商品跟價格 在 line 裡面那就跳過這一行
+			name,price = line.strip().split(",")#用split() 把 逗點分割,用strip()把換行符號刪除
+			products.append([name,price])
+	print(products)
+
+else:
+	print("找不到檔案......")
+
+
+
 
 #讓使用者輸入
 while True:
